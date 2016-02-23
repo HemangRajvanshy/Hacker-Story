@@ -1,0 +1,12 @@
+20th Feburary - 23rd Feburary:
+	- Respository setup.
+	- Storyboard and game flow.
+	- First Tutorial assisted story idea.
+	- Resource Gathering.
+	- Research on game material.
+
+24th Feburary:
+	- Hacking Research
+	- UI Tutorials
+	- Complete first tutorial-assisted hack Storyboard.
+	
