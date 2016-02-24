@@ -6,7 +6,13 @@
 	- Research on game material.
 
 24th Feburary:
-	- Hacking Research
+	- Hacking Research => hacking for dummies.
 	- UI Tutorials
-	- Complete first tutorial-assisted hack Storyboard.
-	
+	- Thought of potential plot idea.
+
+GOAL SET: START SERIOUS PRODUCTION BY 26th FEB
+
+25th February:
+	- Hacking research.
+	- Flesh out plot details.
+	- Start Work on Menu UI
