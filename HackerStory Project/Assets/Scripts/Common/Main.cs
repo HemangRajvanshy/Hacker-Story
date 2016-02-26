@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Main : MonoBehaviour {
-
+    //https://unity3d.com/learn/tutorials/modules/beginner/live-training-archive/persistence-data-saving-loading 30mins
+    //http://gamedevelopment.tutsplus.com/tutorials/how-to-save-and-load-your-players-progress-in-unity--cms-20934
     public static Main Instance;
 
     public MusicManager MusicMgr;
@@ -13,8 +14,15 @@ public class Main : MonoBehaviour {
     #region UnityMethods
     void Awake()
     {
-        Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        if (Instance == null)
+            Instance = this;
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        
     }
     #endregion
 
