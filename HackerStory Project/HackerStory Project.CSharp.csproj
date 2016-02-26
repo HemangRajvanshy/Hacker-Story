@@ -74,6 +74,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Common\BackButton.cs" />
+    <Compile Include="Assets\Scripts\Common\CameraController.cs" />
     <Compile Include="Assets\Scripts\Common\Main.cs" />
     <Compile Include="Assets\Scripts\Common\MusicManager.cs" />
     <Compile Include="Assets\Scripts\Common\SfxManager.cs" />

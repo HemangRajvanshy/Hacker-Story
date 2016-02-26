@@ -5,18 +5,24 @@ public class Main : MonoBehaviour {
 
     public static Main Instance;
 
+    public MusicManager MusicMgr;
+    public SfxManager SfxMgr;
+
+    public GameObject LoadScreen;
 
     #region UnityMethods
     void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     #endregion
 
     #region publicMethods
     public void LoadGameScene()
     {
-        Debug.Log("TODO Load Game Scene");
+        ShowLoadingScreen("Game");
+        Application.LoadLevel("Game");
     }
 
     public void LoadMenuScene()
@@ -27,9 +33,26 @@ public class Main : MonoBehaviour {
     #endregion
 
     #region privateMethods
-    private void ShowLoadingScreen()
+
+    #region Loading
+    private AsyncOperation async;
+
+    private void ShowLoadingScreen(string Level)
     {
-        Debug.Log("TODO: Show LoadingScreen");
+        LoadScreen.SetActive(true);
+        StartCoroutine(WaitToLoad(Level));
     }
+
+    IEnumerator WaitToLoad(string Level)
+    {
+        async = Application.LoadLevelAsync(Level);
+        while (!async.isDone)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        LoadScreen.SetActive(false);
+    }
+    #endregion
+    
     #endregion
 }

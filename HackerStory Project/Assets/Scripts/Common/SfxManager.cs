@@ -3,13 +3,10 @@ using System.Collections;
 
 public class SfxManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public bool On { get; private set; }
+
+    void Start()
+    {
+        On = true; //TODO: SAVE AND READ
+    }
 }
