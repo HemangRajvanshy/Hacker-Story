@@ -5,7 +5,7 @@ public class MusicManager : MonoBehaviour {
 
     public bool On { get; private set; }
 
-    void Start()
+    void Awake()
     {
         On = true; //TODO: SAVE AND READ
     }
