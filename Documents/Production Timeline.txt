@@ -10,9 +10,17 @@
 	- UI Tutorials
 	- Thought of potential plot idea.
 
-GOAL SET: START SERIOUS PRODUCTION BY 26th FEB
+Initial GOAL: START SERIOUS PRODUCTION BY 26th FEB
 
 25th February:
 	- Hacking research.
-	- Flesh out plot details.
+	- Think of plot.
 	- Start Work on Menu UI
+	
+26th February:
+	- Make Main UI functional.
+	- Hacking Research and plot ideas.
+
+27th February:
+
+Goal II - Have working prototype by end 18 March and look for artist.
