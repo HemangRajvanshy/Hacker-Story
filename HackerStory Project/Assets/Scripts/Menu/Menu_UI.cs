@@ -6,25 +6,60 @@ public class Menu_UI : MonoBehaviour {
 
     public GameObject PlayPanel;
     public GameObject CreditsPanel;
+    public GameObject QuitPanel;
 
     public Toggle SfxToggle;
     public Toggle MusicToggle;
+
+    private enum MenuState
+    {
+        Play,
+        Credits,
+        Quit
+    };
+    private MenuState menuState;
 
     void Start()
     {
         SfxToggle.isOn = Main.Instance.SfxMgr.On;
         MusicToggle.isOn = Main.Instance.MusicMgr.On;
+        menuState = MenuState.Play;
     }
 
     public void ShowCredits()
     {
-        PlayPanel.SetActive(false);
+        DeactivatePanels();
+        menuState = MenuState.Credits;
         CreditsPanel.SetActive(true);
     }
 
-    public void CloseCredits()
+    public void ClosePanel()
     {
-        PlayPanel.SetActive(true);
-        CreditsPanel.SetActive(false);
+        DeactivatePanels();
+        menuState = MenuState.Play;
+        PlayPanel.GetComponent<PlayPanel>().ShowPlayPanel();
+    }
+
+    public void OnQuitClick()
+    {
+        DeactivatePanels();
+        menuState = MenuState.Quit;
+        QuitPanel.GetComponent<QuitScript>().ShowQuitPanel();
+    }
+
+    private void DeactivatePanels()
+    {
+        switch (menuState)
+        {
+            case MenuState.Play:
+                PlayPanel.GetComponent<PlayPanel>().HidePlayPanel();
+                break;
+            case MenuState.Quit:
+                QuitPanel.GetComponent<QuitScript>().HideQuitPanel();
+                break;
+            case MenuState.Credits:
+                CreditsPanel.SetActive(false);
+                break;
+        }
     }
 }

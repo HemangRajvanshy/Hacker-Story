@@ -7,4 +7,14 @@ public class PlayPanel : MonoBehaviour {
     {
         Main.Instance.LoadGameScene();
     }
+
+    public void ShowPlayPanel()
+    {
+        this.gameObject.SetActive(true);
+    }
+
+    public void HidePlayPanel()
+    {
+        this.gameObject.SetActive(false);
+    }
 }
