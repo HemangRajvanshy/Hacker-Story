@@ -10,6 +10,7 @@ public class Main : MonoBehaviour {
     public SfxManager SfxMgr;
 
     public GameObject LoadScreen;
+    public Player player;
 
     #region UnityMethods
     void Awake()
@@ -27,6 +28,7 @@ public class Main : MonoBehaviour {
     #endregion
 
     #region publicMethods
+
     public void LoadGameScene()
     {
         ShowLoadingScreen("Game");
@@ -35,7 +37,8 @@ public class Main : MonoBehaviour {
 
     public void LoadMenuScene()
     {
-        Debug.Log("TODO: Load Menu Scene");
+        ShowLoadingScreen("Menu");
+        Application.LoadLevel("Menu");
     }
 
     #endregion
