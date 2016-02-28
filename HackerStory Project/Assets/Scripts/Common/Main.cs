@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+//Scene 0 is Menu, Scene 1 is Game.
 public class Main : MonoBehaviour {
 
     public static Main Instance;
@@ -9,6 +11,7 @@ public class Main : MonoBehaviour {
     public SfxManager SfxMgr;
     public GameObject LoadScreen;
     public Player player;
+    public BackButton Back;
 
     #region UnityMethods
     void Awake()

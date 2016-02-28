@@ -2,15 +2,19 @@
 using System.IO;
 using System.Collections;
 
-public class Debug : MonoBehaviour {
-
-    public bool ClearSaveOnPlay;
-
-    void Awake()
+namespace Debugging
+{
+    public class Debug : MonoBehaviour
     {
-        if(ClearSaveOnPlay)
+
+        public bool ClearSaveOnPlay;
+
+        void Awake()
         {
-            File.Delete(Application.persistentDataPath + "/info.dat");
+            if (ClearSaveOnPlay)
+            {
+                File.Delete(Application.persistentDataPath + "/info.dat");
+            }
         }
     }
 }

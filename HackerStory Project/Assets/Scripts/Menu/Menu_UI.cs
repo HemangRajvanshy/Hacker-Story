@@ -47,6 +47,18 @@ public class Menu_UI : MonoBehaviour {
         QuitPanel.GetComponent<QuitScript>().ShowQuitPanel();
     }
 
+    public void Back()
+    {
+        if(menuState == MenuState.Play)
+        {
+            OnQuitClick();
+        }
+        else
+        {
+            ClosePanel();
+        }
+    }
+
     private void DeactivatePanels()
     {
         switch (menuState)

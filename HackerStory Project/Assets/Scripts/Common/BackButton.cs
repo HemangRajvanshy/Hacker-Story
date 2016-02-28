@@ -3,13 +3,16 @@ using System.Collections;
 
 public class BackButton : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    private Menu_UI menu;
+
+    public void Back()
+    {
+        if(Application.loadedLevel == 0) // Menu Scene
+        {
+            if (!menu)
+                menu = GameObject.Find("Canvas/BackgroundImage").GetComponent<Menu_UI>();
+            menu.Back();
+        }
+    }
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
