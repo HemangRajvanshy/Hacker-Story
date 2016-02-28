@@ -7,6 +7,14 @@ public class SfxManager : MonoBehaviour {
 
     void Awake()
     {
-        On = true; //TODO: SAVE AND READ
+        if (Main.Instance.player.PlayerDataExists)
+            On = Main.Instance.player.PlayerData.Sfx;
+        else
+            On = true; 
+    }
+
+    public void MenuOnToggle()
+    {
+        On = GameObject.Find("Canvas/BackgroundImage").GetComponent<Menu_UI>().SfxToggle.isOn;
     }
 }
