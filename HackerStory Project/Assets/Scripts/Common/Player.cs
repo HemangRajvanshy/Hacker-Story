@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
 
     public PlayerSave PlayerData { get; private set; }
     public bool PlayerDataExists { get { return PlayerDataExist(); } }
+    private int StoryIndex;
+    private int HackIndex;
 
     void Awake()
     {
@@ -18,6 +20,8 @@ public class Player : MonoBehaviour {
     {
         Save();
     }
+
+
 
     public void Save()
     {
@@ -41,16 +45,28 @@ public class Player : MonoBehaviour {
 
             InitializeFromSave(save);
         }
+        else
+        {
+            PlayerData = null;
+            HackIndex = 0;
+            StoryIndex = 0;
+        }
     }
 
-    private bool PlayerDataExist()
+    public void SetProgress(int SIndex, int HIndex)
     {
-        return File.Exists(Application.persistentDataPath + "/info.dat");
+        StoryIndex = SIndex;
+        HackIndex = HIndex;
     }
+
+
+    //Private Methods
 
     private void InitializeFromSave(PlayerSave Save)
     {
         PlayerData = Save;
+        StoryIndex = PlayerData.StoryIndex;
+        HackIndex = PlayerData.HackIndex;
     }
 
     private PlayerSave WriteSave()
@@ -58,8 +74,16 @@ public class Player : MonoBehaviour {
         PlayerSave save = new PlayerSave();
         save.Music = Main.Instance.MusicMgr.On;
         save.Sfx = Main.Instance.SfxMgr.On;
+        save.HackIndex = HackIndex;
+        save.StoryIndex = StoryIndex;
         return save;
     }
+
+    private bool PlayerDataExist()
+    {
+        return File.Exists(Application.persistentDataPath + "/info.dat");
+    }
+
 }
 
 [Serializable]
@@ -67,5 +91,8 @@ public class PlayerSave
 {
     public bool Music;
     public bool Sfx;
+
+    public int StoryIndex;
+    public int HackIndex;
 }
 

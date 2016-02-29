@@ -12,10 +12,9 @@ public class Main : MonoBehaviour {
     public SfxManager SfxMgr;
     public GameObject LoadScreen;
     public BackButton Back;
+    public Player player;
 
     public PlayerSave PlayerData { get { return player.PlayerData; } }
-
-    private Player player;
 
 
     #region UnityMethods
@@ -45,6 +44,11 @@ public class Main : MonoBehaviour {
     {
         ShowLoadingScreen("Menu");
         SceneManager.LoadScene("Menu");
+    }
+
+    public void SavePlayerProgress(int SIndex, int HIndex)
+    {
+        player.SetProgress(SIndex, HIndex);
     }
 
     #endregion

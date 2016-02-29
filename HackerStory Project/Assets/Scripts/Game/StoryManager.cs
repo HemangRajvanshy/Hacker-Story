@@ -56,6 +56,7 @@ public class StoryManager : MonoBehaviour {
     private void Close()
     {
         StoryCanvas.enabled = false;
+        GameManager.Game.StoryComplete();
         Debug.Log("Reached End of Story");
     }
 }
