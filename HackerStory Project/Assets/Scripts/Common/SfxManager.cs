@@ -7,8 +7,8 @@ public class SfxManager : MonoBehaviour {
 
     void Awake()
     {
-        if (Main.Instance.player.PlayerDataExists)
-            On = Main.Instance.player.PlayerData.Sfx;
+        if (Main.Instance.PlayerData != null)
+            On = Main.Instance.PlayerData.Sfx;
         else
             On = true; 
     }

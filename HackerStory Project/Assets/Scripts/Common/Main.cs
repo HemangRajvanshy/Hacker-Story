@@ -11,8 +11,12 @@ public class Main : MonoBehaviour {
     public MusicManager MusicMgr;
     public SfxManager SfxMgr;
     public GameObject LoadScreen;
-    public Player player;
     public BackButton Back;
+
+    public PlayerSave PlayerData { get { return player.PlayerData; } }
+
+    private Player player;
+
 
     #region UnityMethods
     void Awake()

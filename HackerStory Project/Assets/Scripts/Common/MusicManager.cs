@@ -7,8 +7,8 @@ public class MusicManager : MonoBehaviour {
 
     void Awake()
     {
-        if (Main.Instance.player.PlayerDataExists)
-            On = Main.Instance.player.PlayerData.Music;
+        if (Main.Instance.PlayerData != null)
+            On = Main.Instance.PlayerData.Music;
         else
             On = true;
     }
