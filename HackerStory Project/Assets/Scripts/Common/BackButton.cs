@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class BackButton : MonoBehaviour {
@@ -7,7 +8,7 @@ public class BackButton : MonoBehaviour {
 
     public void Back()
     {
-        if(Application.loadedLevel == 0) // Menu Scene
+        if(SceneManager.GetActiveScene().name == "Menu") // Menu Scene
         {
             if (!menu)
                 menu = GameObject.Find("Canvas/BackgroundImage").GetComponent<Menu_UI>();

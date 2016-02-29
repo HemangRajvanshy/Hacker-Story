@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 
@@ -29,17 +30,17 @@ public class Main : MonoBehaviour {
     #endregion
 
     #region publicMethods
-
+    
     public void LoadGameScene()
     {
         ShowLoadingScreen("Game");
-        Application.LoadLevel("Game");
+        SceneManager.LoadScene("Game");
     }
 
     public void LoadMenuScene()
     {
         ShowLoadingScreen("Menu");
-        Application.LoadLevel("Menu");
+        SceneManager.LoadScene("Menu");
     }
 
     #endregion
@@ -57,7 +58,7 @@ public class Main : MonoBehaviour {
 
     IEnumerator WaitToLoad(string Level)
     {
-        async = Application.LoadLevelAsync(Level);
+        async = SceneManager.LoadSceneAsync(Level);
         while (!async.isDone)
         {
             yield return new WaitForEndOfFrame();
