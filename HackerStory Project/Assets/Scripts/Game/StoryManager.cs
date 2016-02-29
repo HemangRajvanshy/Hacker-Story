@@ -10,6 +10,7 @@ public class StoryManager : MonoBehaviour {
     public Canvas StoryCanvas;
     public Image StoryBackground;
     public Text Dialogue;
+    public int LetterPerSec = 5;
 
     private Story CurrentStory;
     private int SceneNumber;
@@ -26,7 +27,7 @@ public class StoryManager : MonoBehaviour {
 
         CurrentScene = CurrentStory.StoryScenes[SceneNumber];
         StoryBackground.sprite = CurrentScene.image;
-        Dialogue.text = CurrentScene.Dialogues[DialogueNumber];
+        StartCoroutine(TypeText(CurrentScene.Dialogues[DialogueNumber]));
     }
 
     public void Next() //Next Dialogue
@@ -34,7 +35,7 @@ public class StoryManager : MonoBehaviour {
         if((CurrentScene.Dialogues.Count-1) > DialogueNumber) //Check if there are any more dialogues.
         {
             DialogueNumber++;
-            Dialogue.text = CurrentScene.Dialogues[DialogueNumber];
+            StartCoroutine(TypeText(CurrentScene.Dialogues[DialogueNumber]));
         }
         else
         {
@@ -43,13 +44,25 @@ public class StoryManager : MonoBehaviour {
                 SceneNumber++;
                 CurrentScene = CurrentStory.StoryScenes[SceneNumber];
                 DialogueNumber = 0;
-                Dialogue.text = CurrentScene.Dialogues[DialogueNumber];
+                StartCoroutine(TypeText(CurrentScene.Dialogues[DialogueNumber]));
                 StoryBackground.sprite = CurrentScene.image;
             }
             else
             {
                 Close();
             }
+        }
+    }
+
+    IEnumerator TypeText(string text)
+    {
+        Dialogue.text = "";
+        foreach (char letter in text)
+        {
+            Dialogue.text += letter;
+            if (Main.Instance.SfxMgr.TypingSfx)
+                Main.Instance.SfxMgr.Play(Main.Instance.SfxMgr.TypingSfx);
+             yield return new WaitForSeconds(1/LetterPerSec);
         }
     }
 
