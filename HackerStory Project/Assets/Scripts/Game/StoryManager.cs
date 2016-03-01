@@ -55,6 +55,10 @@ public class StoryManager : MonoBehaviour {
             if((CurrentStory.StoryScenes.Length-1) > SceneNumber) // Check if there are any more Story Scenes.
             {
                 NextScene();
+                if(CurrentStory.StoryScenes.Length-2 == SceneNumber)
+                {
+                    LastScene();
+                }
             }
             else
             {
@@ -85,7 +89,6 @@ public class StoryManager : MonoBehaviour {
         Typing = false;
     }
 
-
     private void NextScene()
     {
         SceneNumber++;
@@ -93,6 +96,11 @@ public class StoryManager : MonoBehaviour {
         DialogueNumber = 0;
         StartCoroutine(TypeText(CurrentScene.Dialogues[DialogueNumber]));
         StoryBackground.sprite = CurrentScene.image;
+    }
+
+    private void LastScene()
+    {
+        Debug.Log("Last Scene, might as well start loading hack.");
     }
 
     private void Close()

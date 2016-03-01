@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager Game;
 
     public StoryManager Story;
+    public HackManager Hack;
 
     private int StoryIndex = 0;
     private int HackIndex = 0;
@@ -26,9 +27,10 @@ public class GameManager : MonoBehaviour {
             HackIndex = Main.Instance.PlayerData.HackIndex;
         }
         if (StoryIndex == HackIndex)
-        {
-            Story.Init(StoryIndex);
-        }
+            StartStory(StoryIndex);
+        else
+            StartHack(HackIndex);
+        
     }
 
     #endregion
@@ -38,11 +40,26 @@ public class GameManager : MonoBehaviour {
     {
         StoryIndex++;
         Main.Instance.SavePlayerProgress(StoryIndex, HackIndex);
+        StartHack(HackIndex);
     }
     public void HackComlete()
     {
         HackIndex++;
         Main.Instance.SavePlayerProgress(StoryIndex, HackIndex);
+        StartStory(StoryIndex);
+    }
+    #endregion
+
+
+    #region private Methods
+    private void StartStory(int StoryIndx)
+    {
+        Story.Init(StoryIndex);
+    }
+
+    private void StartHack(int HackIndx)
+    {
+        Hack.Init(HackIndex);
     }
     #endregion
 
