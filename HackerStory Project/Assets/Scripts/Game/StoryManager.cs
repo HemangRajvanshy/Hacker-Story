@@ -16,6 +16,7 @@ public class StoryManager : MonoBehaviour {
     private int SceneNumber;
     private int DialogueNumber;
     private StoryScene CurrentScene;
+    private bool Typing;
 
 
     public void Init(int StoryNumber) // Called by GameManager
@@ -30,7 +31,19 @@ public class StoryManager : MonoBehaviour {
         StartCoroutine(TypeText(CurrentScene.Dialogues[DialogueNumber]));
     }
 
-    public void Next() //Next Dialogue
+    public void OnClick()
+    {
+        if (Typing)
+        {
+            Typing = false;
+        }
+        else
+        {
+            Next();
+        }
+    }
+
+    private void Next() //Next Dialogue
     {
         if((CurrentScene.Dialogues.Count-1) > DialogueNumber) //Check if there are any more dialogues.
         {
@@ -41,11 +54,7 @@ public class StoryManager : MonoBehaviour {
         {
             if((CurrentStory.StoryScenes.Length-1) > SceneNumber) // Check if there are any more Story Scenes.
             {
-                SceneNumber++;
-                CurrentScene = CurrentStory.StoryScenes[SceneNumber];
-                DialogueNumber = 0;
-                StartCoroutine(TypeText(CurrentScene.Dialogues[DialogueNumber]));
-                StoryBackground.sprite = CurrentScene.image;
+                NextScene();
             }
             else
             {
@@ -57,13 +66,33 @@ public class StoryManager : MonoBehaviour {
     IEnumerator TypeText(string text)
     {
         Dialogue.text = "";
+        Typing = true;
         foreach (char letter in text)
         {
-            Dialogue.text += letter;
-            if (Main.Instance.SfxMgr.TypingSfx)
-                Main.Instance.SfxMgr.Play(Main.Instance.SfxMgr.TypingSfx);
-             yield return new WaitForSeconds(1/LetterPerSec);
+            if (Typing)
+            {
+                Dialogue.text += letter;
+                if (Main.Instance.SfxMgr.TypingSfx)
+                    Main.Instance.SfxMgr.Play(Main.Instance.SfxMgr.TypingSfx);
+                yield return new WaitForSeconds(1 / LetterPerSec); 
+            }
+            else
+            {
+                Dialogue.text = text;
+                break;
+            }
         }
+        Typing = false;
+    }
+
+
+    private void NextScene()
+    {
+        SceneNumber++;
+        CurrentScene = CurrentStory.StoryScenes[SceneNumber];
+        DialogueNumber = 0;
+        StartCoroutine(TypeText(CurrentScene.Dialogues[DialogueNumber]));
+        StoryBackground.sprite = CurrentScene.image;
     }
 
     private void Close()
