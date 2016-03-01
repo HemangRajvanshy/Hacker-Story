@@ -77,8 +77,9 @@
     <Compile Include="Assets\Scripts\Common\SfxManager.cs" />
     <Compile Include="Assets\Scripts\Debug\Debug.cs" />
     <Compile Include="Assets\Scripts\Game\CameraController.cs" />
-    <Compile Include="Assets\Scripts\Game\Dekstop.cs" />
+    <Compile Include="Assets\Scripts\Game\Desktop.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Hack.cs" />
     <Compile Include="Assets\Scripts\Game\HackManager.cs" />
     <Compile Include="Assets\Scripts\Game\Story.cs" />
     <Compile Include="Assets\Scripts\Game\StoryManager.cs" />

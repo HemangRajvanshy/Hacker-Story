@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Dekstop : MonoBehaviour {
+public class Desktop : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
