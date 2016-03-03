@@ -48,7 +48,7 @@ public class StoryManager : MonoBehaviour {
         if((CurrentScene.Dialogues.Count-1) > DialogueNumber) //Check if there are any more dialogues.
         {
             DialogueNumber++;
-            StartCoroutine(TypeText(CurrentScene.Dialogues[DialogueNumber]));
+            NextDialogue(DialogueNumber);
         }
         else
         {
@@ -67,10 +67,11 @@ public class StoryManager : MonoBehaviour {
         }
     }
 
-    IEnumerator TypeText(string text)
+    IEnumerator TypeText(string text, float wait = 0f)
     {
         Dialogue.text = "";
         Typing = true;
+        yield return new WaitForSeconds(wait);
         foreach (char letter in text)
         {
             if (Typing)
@@ -89,12 +90,19 @@ public class StoryManager : MonoBehaviour {
         Typing = false;
     }
 
+    private void NextDialogue(int DialogueNmuber)
+    {
+        if (CurrentScene.SfxList[DialogueNumber] != null)
+            Main.Instance.SfxMgr.Play(CurrentScene.SfxList[DialogueNumber]);
+        StartCoroutine(TypeText(CurrentScene.Dialogues[DialogueNumber], CurrentScene.Delays[DialogueNumber]));
+    }
+
     private void NextScene()
     {
         SceneNumber++;
         CurrentScene = CurrentStory.StoryScenes[SceneNumber];
         DialogueNumber = 0;
-        StartCoroutine(TypeText(CurrentScene.Dialogues[DialogueNumber]));
+        NextDialogue(DialogueNumber);
         StoryBackground.sprite = CurrentScene.image;
     }
 

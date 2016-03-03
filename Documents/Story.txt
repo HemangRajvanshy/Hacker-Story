@@ -1,0 +1,28 @@
+The game is about a young hacker(12-13)
+Story will be narrated VN style, no voice, and still images in the background, with the image changing
+every 2-3 dialogue.
+The story isn't central to the game, but I need it to support the rest of the game adequately.
+The games Unique selling Point lies in the fact that it teached actual hacking, with only minimal gloss
+on the technical details(so as to keep the game enjoyable), unlike any game I could find.
+The story then calls for me to be able to adequately place interesting enough hacks along the way
+(I am thinking of around 2-3 hours gameplay including everything-thinking reading.)
+
+The main story idea which I had from the start was this:
+The game would start with a school student council elections where in the protag's friend is
+contesting. The school has set a site for campaigning where the contestants can promise stuff,
+Protag's friends page isn't what he submitted. He talks to protag.(Maybe the school can't access the site anymore as well)
+I can put in a couple of hack's here, the protag would revert the site to original. 
+
+Continuing with student council elections, anonymous poster defames protag's friend on a 
+social network, hack account.
+Here I can show a couple of more hacks.
+
+Game starts,
+Protag thinking what to hack...
+Bell rings, mom announces friend has come, friend comes in.
+tell us about said website. 
+Here two hacks happen in succession,
+For the first, he thinks hes got it, submits, No. 
+Not working, the dude has changed the password. 
+Hack 2 to actually get in the website.
+
