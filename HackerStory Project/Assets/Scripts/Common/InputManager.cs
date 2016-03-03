@@ -9,5 +9,10 @@ public class InputManager : MonoBehaviour {
         {
             Main.Instance.Back.Back();
         }
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            Main.Instance.OnClick();
+        }
 	}
 }

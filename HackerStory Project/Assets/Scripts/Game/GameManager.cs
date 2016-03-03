@@ -11,7 +11,13 @@ public class GameManager : MonoBehaviour {
 
     private int StoryIndex = 0;
     private int HackIndex = 0;
+    private GameState state;
 
+    private enum GameState
+    {
+        Story,
+        Hack
+    };
 
     #region UnityMethods
     void Awake()
@@ -49,17 +55,32 @@ public class GameManager : MonoBehaviour {
         Main.Instance.SavePlayerProgress(StoryIndex, HackIndex);
         StartStory(StoryIndex);
     }
+
+    public void OnClick()
+    {
+        switch(state)
+        {
+            case GameState.Hack:
+                Hack.OnClick();
+                break;
+            case GameState.Story:
+                Story.OnClick();
+                break;
+        }
+    }
     #endregion
 
 
     #region private Methods
     private void StartStory(int StoryIndx)
     {
+        state = GameState.Story;
         Story.Init(StoryIndex);
     }
 
     private void StartHack(int HackIndx)
     {
+        state = GameState.Hack;
         Hack.Init(HackIndex);
     }
     #endregion

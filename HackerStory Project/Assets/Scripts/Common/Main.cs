@@ -51,6 +51,14 @@ public class Main : MonoBehaviour {
         player.SetProgress(SIndex, HIndex);
     }
 
+    public void OnClick()
+    {
+        if(SceneManager.GetActiveScene().name == "Game")
+        {
+            GameManager.Game.OnClick();
+        }
+    }
+
     #endregion
 
     #region privateMethods
