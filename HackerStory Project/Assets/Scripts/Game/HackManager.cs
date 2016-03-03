@@ -11,6 +11,8 @@ public class HackManager : MonoBehaviour {
     public void Init(int HackNumber) // Called by GameManager
     {
         MonitorCanvas.enabled = true;
+        if (HackNumber == 0)
+            Tutorial.StartTutorial();
         Debug.Log("Start Hack Number: " + HackNumber);
     }
 }

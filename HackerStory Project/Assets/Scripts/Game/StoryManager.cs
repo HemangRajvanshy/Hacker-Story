@@ -10,14 +10,11 @@ public class StoryManager : MonoBehaviour {
     public Canvas StoryCanvas;
     public Image StoryBackground;
     public Text Dialogue;
-    public int LetterPerSec = 5;
 
     private Story CurrentStory;
     private int SceneNumber;
     private int DialogueNumber;
     private StoryScene CurrentScene;
-    private bool Typing;
-
 
     public void Init(int StoryNumber) // Called by GameManager
     {
@@ -28,14 +25,14 @@ public class StoryManager : MonoBehaviour {
 
         CurrentScene = CurrentStory.StoryScenes[SceneNumber];
         StoryBackground.sprite = CurrentScene.image;
-        StartCoroutine(TypeText(CurrentScene.Dialogues[DialogueNumber]));
+        NextDialogue(DialogueNumber);
     }
 
     public void OnClick()
     {
-        if (Typing)
+        if (GameManager.Game.TextType.Typing)
         {
-            Typing = false;
+            GameManager.Game.TextType.StopTyping();
         }
         else
         {
@@ -67,34 +64,12 @@ public class StoryManager : MonoBehaviour {
         }
     }
 
-    IEnumerator TypeText(string text, float wait = 0f)
-    {
-        Dialogue.text = "";
-        Typing = true;
-        yield return new WaitForSeconds(wait);
-        foreach (char letter in text)
-        {
-            if (Typing)
-            {
-                Dialogue.text += letter;
-                if (Main.Instance.SfxMgr.TypingSfx)
-                    Main.Instance.SfxMgr.Play(Main.Instance.SfxMgr.TypingSfx);
-                yield return new WaitForSeconds(1 / LetterPerSec); 
-            }
-            else
-            {
-                Dialogue.text = text;
-                break;
-            }
-        }
-        Typing = false;
-    }
-
+    
     private void NextDialogue(int DialogueNmuber)
     {
         if (CurrentScene.SfxList[DialogueNumber] != null)
             Main.Instance.SfxMgr.Play(CurrentScene.SfxList[DialogueNumber]);
-        StartCoroutine(TypeText(CurrentScene.Dialogues[DialogueNumber], CurrentScene.Delays[DialogueNumber]));
+        StartCoroutine(GameManager.Game.TextType.TypeText(Dialogue, CurrentScene.Dialogues[DialogueNumber], CurrentScene.Delays[DialogueNumber]));
     }
 
     private void NextScene()

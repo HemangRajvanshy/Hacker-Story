@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager Game;
 
+    public TextType TextType;
     public StoryManager Story;
     public HackManager Hack;
 
