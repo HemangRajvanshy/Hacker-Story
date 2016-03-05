@@ -55,7 +55,6 @@ public class Desktop : MonoBehaviour {
     public void MinimizeApplication(GameObject App)
     {
         App.SetActive(false); //TODO
-        Debug.Log("called");
     }
 
     public void CloseApplication(GameObject App)
