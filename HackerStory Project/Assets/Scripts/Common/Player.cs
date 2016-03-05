@@ -21,8 +21,6 @@ public class Player : MonoBehaviour {
         Save();
     }
 
-
-
     public void Save()
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -32,6 +30,7 @@ public class Player : MonoBehaviour {
         save = WriteSave();
 
         formatter.Serialize(file, save);
+        file.Close();
     }
 
     public void Load()

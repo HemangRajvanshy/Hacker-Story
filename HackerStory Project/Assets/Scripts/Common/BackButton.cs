@@ -14,6 +14,10 @@ public class BackButton : MonoBehaviour {
                 menu = GameObject.Find("Canvas/BackgroundImage").GetComponent<Menu_UI>();
             menu.Back();
         }
+        if(SceneManager.GetActiveScene().name == "Game")
+        {
+            GameManager.Game.OnBack();
+        }
     }
 	
 }

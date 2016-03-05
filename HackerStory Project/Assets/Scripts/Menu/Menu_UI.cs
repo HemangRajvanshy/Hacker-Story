@@ -59,6 +59,16 @@ public class Menu_UI : MonoBehaviour {
         }
     }
 
+    public void MusicOn_Off()
+    {
+        Main.Instance.MusicMgr.MenuToggle(MusicToggle.isOn);
+    }
+
+    public void SfxOn_Off()
+    {
+        Main.Instance.SfxMgr.MenuToggle(SfxToggle.isOn);
+    }
+
     private void DeactivatePanels()
     {
         switch (menuState)

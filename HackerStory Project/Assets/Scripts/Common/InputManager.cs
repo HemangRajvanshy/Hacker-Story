@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 using System.Collections;
 
 public class InputManager : MonoBehaviour {
@@ -12,7 +14,13 @@ public class InputManager : MonoBehaviour {
 
         if(Input.GetMouseButtonDown(0))
         {
-            Main.Instance.OnClick();
+            PointerEventData pointer = new PointerEventData(EventSystem.current);
+            pointer.position = Input.mousePosition;
+
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointer, raycastResults);
+
+            Main.Instance.OnClick(raycastResults[0]);
         }
-	}
+    }
 }

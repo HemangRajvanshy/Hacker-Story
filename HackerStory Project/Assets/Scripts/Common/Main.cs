@@ -25,10 +25,10 @@ public class Main : MonoBehaviour {
         if (Instance == null)
             Instance = this;
         else if (Instance != this)
-        { 
+        {
             Destroy(gameObject);
         }
-        
+
     }
     #endregion
 
@@ -51,11 +51,11 @@ public class Main : MonoBehaviour {
         player.SetProgress(SIndex, HIndex);
     }
 
-    public void OnClick()
+    public void OnClick(UnityEngine.EventSystems.RaycastResult result)
     {
         if(SceneManager.GetActiveScene().name == "Game")
         {
-            GameManager.Game.OnClick();
+            GameManager.Game.OnClick(result);
         }
     }
 

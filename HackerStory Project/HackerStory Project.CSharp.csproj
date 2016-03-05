@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Game\Hack.cs" />
     <Compile Include="Assets\Scripts\Game\HackManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Pause.cs" />
     <Compile Include="Assets\Scripts\Game\Story.cs" />
     <Compile Include="Assets\Scripts\Game\StoryManager.cs" />
     <Compile Include="Assets\Scripts\Game\TextType.cs" />

@@ -13,8 +13,8 @@ public class MusicManager : MonoBehaviour {
             On = true;
     }
 
-    public void MenuOnToggle()
+    public void MenuToggle(bool value)
     {
-        On = GameObject.Find("Canvas/BackgroundImage").GetComponent<Menu_UI>().MusicToggle.isOn;
+        On = value;
     }
 }

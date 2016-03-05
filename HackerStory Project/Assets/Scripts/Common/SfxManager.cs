@@ -21,8 +21,8 @@ public class SfxManager : MonoBehaviour {
         Audio.PlayOneShot(clip);
     }
 
-    public void MenuOnToggle()
+    public void MenuToggle(bool value)
     {
-        On = GameObject.Find("Canvas/BackgroundImage").GetComponent<Menu_UI>().SfxToggle.isOn;
+        On = value;
     }
 }

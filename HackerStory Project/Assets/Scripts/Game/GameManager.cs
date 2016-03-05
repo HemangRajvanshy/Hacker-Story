@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     public TextType TextType;
     public StoryManager Story;
     public HackManager Hack;
+    public Pause Pause;
 
     private int StoryIndex = 0;
     private int HackIndex = 0;
@@ -56,9 +57,11 @@ public class GameManager : MonoBehaviour {
         StartStory(StoryIndex);
     }
 
-    public void OnClick()
+    public void OnClick(UnityEngine.EventSystems.RaycastResult ray)
     {
-        switch(state)
+        if (ray.module.name == "PauseCanvas")
+            return;
+        switch (state)
         {
             case GameState.Hack:
                 Hack.OnClick();
@@ -67,6 +70,11 @@ public class GameManager : MonoBehaviour {
                 Story.OnClick();
                 break;
         }
+    }
+
+    public void OnBack()
+    {
+        Pause.Pause_Resume();
     }
     #endregion
 
