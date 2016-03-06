@@ -3,9 +3,12 @@ using System.Collections;
 
 public class Desktop : MonoBehaviour {
 
-    public GameObject HackerGuide;
-    public GameObject Browser;
-    public GameObject Computer;
+    //Panel objects
+    public App HackerGuide;
+    public App Browser;
+    public App Computer;
+
+    public TaskBar TaskBar;
 
     private DesktopState state;
     private enum DesktopState
@@ -42,23 +45,23 @@ public class Desktop : MonoBehaviour {
     public void ShowDesktop()
     {
         state = DesktopState.Desktop;
-        HackerGuide.SetActive(false);
-        Browser.SetActive(false);
-        Computer.SetActive(false);
+        HackerGuide.Close();
+        Browser.Close();
+        Computer.Close();
     }
 
-    private void OpenApplication(GameObject App)
+    private void OpenApplication(App App)
     {
-        App.SetActive(true);
+        App.Open();
     }
 
-    public void MinimizeApplication(GameObject App)
+    public void MinimizeApplication(App App)
     {
-        App.SetActive(false); //TODO
+        App.Minimize(); //TODO
     }
 
-    public void CloseApplication(GameObject App)
+    public void CloseApplication(App App)
     {
-        App.SetActive(false); //TODO
+        App.Close(); //TODO
     }
 }

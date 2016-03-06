@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Computer : App {
+public class TaskBarApp : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

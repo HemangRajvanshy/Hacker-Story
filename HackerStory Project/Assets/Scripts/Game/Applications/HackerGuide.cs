@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 
-public class HackerGuide : MonoBehaviour { 
+public class HackerGuide : App { 
 
     public List<Sprite> Pages;
     public Button LastPageButton;
@@ -12,9 +12,9 @@ public class HackerGuide : MonoBehaviour {
 
     private int PageIndex;
 
-
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         PageIndex = 0;
         OpenPage(PageIndex);
     }
