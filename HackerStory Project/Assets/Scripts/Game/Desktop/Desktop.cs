@@ -10,14 +10,15 @@ public class Desktop : MonoBehaviour {
 
     public TaskBar TaskBar;
 
-    private DesktopState state;
-    private enum DesktopState
-    {
-        Desktop,
-        HackerGuide,
-        Computer, 
-        Browser
-    };
+    //[HideInInspector]
+    //private DesktopState state;
+    //public enum DesktopState
+    //{
+    //    Desktop,
+    //    HackerGuide,
+    //    Computer, 
+    //    Browser
+    //};
 
     void Start()
     {
@@ -26,25 +27,25 @@ public class Desktop : MonoBehaviour {
 
     public void ShowHackerGuide()
     {
-        state = DesktopState.HackerGuide;
+      //  state = DesktopState.HackerGuide;
         OpenApplication(HackerGuide);
     }
 
     public void ShowBrowser()
     {
-        state = DesktopState.Browser;
+      //  state = DesktopState.Browser;
         OpenApplication(Browser);
     }
 
     public void ShowComputer()
     {
-        state = DesktopState.Computer;
+       // state = DesktopState.Computer;
         OpenApplication(Computer);
     }
 
     public void ShowDesktop()
     {
-        state = DesktopState.Desktop;
+       // state = DesktopState.Desktop;
         HackerGuide.Close();
         Browser.Close();
         Computer.Close();
@@ -53,15 +54,18 @@ public class Desktop : MonoBehaviour {
     private void OpenApplication(App App)
     {
         App.Open();
+        TaskBar.OpenApplication(App);
     }
 
     public void MinimizeApplication(App App)
     {
-        App.Minimize(); //TODO
+        App.Minimize();
+        TaskBar.MinimizeApplication(App);
     }
 
     public void CloseApplication(App App)
     {
-        App.Close(); //TODO
+        App.Close();
+        TaskBar.CloseApplication(App);
     }
 }

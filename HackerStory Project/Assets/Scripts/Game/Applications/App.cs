@@ -4,11 +4,13 @@ using System.Collections;
 
 public class App : MonoBehaviour {
 
+    public bool open;
+
     public string AppName;
     public Sprite Icon;
-
     public Text TitleText;
     public Image TitleIcon;
+
 
     protected virtual void Start()
     {
@@ -19,16 +21,20 @@ public class App : MonoBehaviour {
     public virtual void Open()
     {
         this.gameObject.SetActive(true);
+        this.transform.SetAsLastSibling();
+        open = true;
     }
 
     public virtual void Minimize()
     {
         this.gameObject.SetActive(false);
+        open = false;
     }
 
     public virtual void Close()
     {
         this.gameObject.SetActive(false);
+        open = false;
     }
 
 }
