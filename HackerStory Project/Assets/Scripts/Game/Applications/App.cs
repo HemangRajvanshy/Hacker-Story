@@ -4,6 +4,7 @@ using System.Collections;
 
 public class App : MonoBehaviour {
 
+    [HideInInspector]
     public bool open;
 
     public string AppName;

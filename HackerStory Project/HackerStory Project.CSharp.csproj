@@ -77,7 +77,11 @@
     <Compile Include="Assets\Scripts\Common\SfxManager.cs" />
     <Compile Include="Assets\Scripts\Debug\Debug.cs" />
     <Compile Include="Assets\Scripts\Game\Applications\App.cs" />
-    <Compile Include="Assets\Scripts\Game\Applications\Browser.cs" />
+    <Compile Include="Assets\Scripts\Game\Applications\Browser\Browser.cs" />
+    <Compile Include="Assets\Scripts\Game\Applications\Browser\HomeTab.cs" />
+    <Compile Include="Assets\Scripts\Game\Applications\Browser\Tab.cs" />
+    <Compile Include="Assets\Scripts\Game\Applications\Browser\TabBar.cs" />
+    <Compile Include="Assets\Scripts\Game\Applications\Browser\TabBarTab.cs" />
     <Compile Include="Assets\Scripts\Game\Applications\Computer.cs" />
     <Compile Include="Assets\Scripts\Game\Applications\HackerGuide.cs" />
     <Compile Include="Assets\Scripts\Game\CameraController.cs" />

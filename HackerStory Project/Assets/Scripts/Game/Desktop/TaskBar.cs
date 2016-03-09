@@ -8,9 +8,9 @@ public class TaskBar : MonoBehaviour {
     public GameObject ApplicationButton;
     public LayoutElement ButtonLayout;
 
-    private Dictionary<App, GameObject> OpenApps;
+    internal Dictionary<App, GameObject> OpenApps;
 
-    void Start()
+    protected virtual void Start()
     {
         ButtonLayout.preferredWidth = Screen.width / 5f;
         ApplicationButton.SetActive(false);
@@ -42,7 +42,7 @@ public class TaskBar : MonoBehaviour {
         TaskBarApp AppProp = OpenApps[app].GetComponent<TaskBarApp>();
     }
 
-    public void CloseApplication(App app)
+    public virtual void CloseApplication(App app)
     {
         Destroy(OpenApps[app]);
         OpenApps.Remove(app);
