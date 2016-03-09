@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using System.Collections;
 
 public class HackManager : MonoBehaviour {
 
     public Canvas MonitorCanvas;
 
+    public List<GameObject> Hacks;
     public Tutorial Tutorial;
     public Desktop Desktop;
+
+    [HideInInspector]
+    public Hack CurrentHack;
 
     private bool InTutorial = false;
 
@@ -18,7 +23,9 @@ public class HackManager : MonoBehaviour {
             InTutorial = true;
             Tutorial.StartTutorial();
         }
-        Debug.Log("Start Hack Number: " + HackNumber);
+        CurrentHack = Hacks[HackNumber].GetComponent<Hack>();
+        Instantiate(Hacks[HackNumber]);
+        Debug.Log("Started Hack Number: " + HackNumber);
     }
 
     public void OnClick()

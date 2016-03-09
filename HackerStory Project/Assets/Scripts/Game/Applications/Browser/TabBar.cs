@@ -6,6 +6,11 @@ public class TabBar : TaskBar {
 
     public Browser Browser;
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     public override void CloseApplication(App app)
     {
         base.CloseApplication(app);

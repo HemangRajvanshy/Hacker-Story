@@ -19,7 +19,8 @@ public class TaskBar : MonoBehaviour {
 
     public void OpenApplication(App app)
     {
-        if(!OpenApps.ContainsKey(app))
+        Debug.Log(OpenApps);
+        if (!OpenApps.ContainsKey(app))
         {
             GameObject AppButton = Instantiate(ApplicationButton);
             AppButton.SetActive(true);
