@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     public StoryManager Story;
     public HackManager Hack;
     public Pause Pause;
+//RemoveIfNotNeeded:   public Camera MainCamera;
 
     private int StoryIndex = 0;
     private int HackIndex = 0;
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour {
     void Awake()
     {
         if (!Game)
-            Game = this;
+            Game = this;   
     }
 
     void Start()
@@ -38,7 +39,6 @@ public class GameManager : MonoBehaviour {
             StartStory(StoryIndex);
         else
             StartHack(HackIndex);
-        
     }
 
     #endregion
