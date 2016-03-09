@@ -9,7 +9,7 @@ public class Browser : App {
 
     protected override void Start()
     {
-        OpenTab(HomeTab);
+        OpenTab(HomeTab); 
     }
 
     public void OpenTab(Tab tab)
