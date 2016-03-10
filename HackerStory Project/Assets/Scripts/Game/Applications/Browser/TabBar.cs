@@ -13,7 +13,15 @@ public class TabBar : TaskBar {
 
     public void OpenInSameTab(Tab tab)
     {
-
+        OpenApplication(tab);
+        foreach(App app in OpenApps.Keys)
+        {
+            if (app.open && app != tab)
+            {
+                Browser.CloseTab(app);
+                break;
+            }
+        }
     }
 
     public override void CloseApplication(App app)

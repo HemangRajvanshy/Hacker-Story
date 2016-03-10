@@ -19,6 +19,12 @@ public class Browser : App {
         TabBar.OpenApplication(tab);
     }
 
+    public void OpenInSameTab(Tab tab)
+    {
+        tab.Open();
+        TabBar.OpenInSameTab(tab);
+    }
+
     public void CloseTab(App app)
     {
         app.Close();
@@ -27,7 +33,7 @@ public class Browser : App {
 
     public void PageNotFound()
     {
-        OpenTab(NotFoundTab);
+        OpenInSameTab(NotFoundTab);
     }
 
     public override void Close()

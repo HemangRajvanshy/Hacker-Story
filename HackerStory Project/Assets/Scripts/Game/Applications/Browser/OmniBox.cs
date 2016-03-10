@@ -47,7 +47,7 @@ public class OmniBox : MonoBehaviour {
 
     public void OnEndEdit()
     {
-        StartCoroutine(WaitBeforeResolve(0.1f));
+        StartCoroutine(WaitBeforeResolve(0.2f));
     }
 
     public void OnSuggestionClick(string Suggestion)
@@ -64,9 +64,9 @@ public class OmniBox : MonoBehaviour {
 
     private void ResolveAddress(string address)
     {
-        Debug.Log(address);
+        SiteSuggestionBox.SetActive(false);
         if (TabDict.ContainsKey(address))
-            transform.parent.GetComponent<Browser>().OpenTab(TabDict[address]);
+            transform.parent.GetComponent<Browser>().OpenInSameTab(TabDict[address]);
         else
             transform.parent.GetComponent<Browser>().PageNotFound();
     }
