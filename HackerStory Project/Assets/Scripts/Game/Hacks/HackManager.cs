@@ -9,6 +9,7 @@ public class HackManager : MonoBehaviour {
     public List<GameObject> Hacks;
     public Tutorial Tutorial;
     public Desktop Desktop;
+    public Browser Browser; 
 
     [HideInInspector]
     public Hack CurrentHack;

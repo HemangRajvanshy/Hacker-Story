@@ -13,5 +13,9 @@ public class Hack : MonoBehaviour {
     void Start()
     {
         HackCanvas.worldCamera = Camera.main;
+        foreach(GameObject Tab in Tabs)
+        {
+            Tab.transform.SetParent(GameManager.Game.Hack.Browser.Tabs.transform);
+        }
     }
 }

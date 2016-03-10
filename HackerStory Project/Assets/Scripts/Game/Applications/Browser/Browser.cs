@@ -5,6 +5,7 @@ public class Browser : App {
 
     public TabBar TabBar;
     public Tab HomeTab;
+    public Tab NotFoundTab;
     public GameObject Tabs;
 
     protected override void Start()
@@ -22,6 +23,11 @@ public class Browser : App {
     {
         app.Close();
         TabBar.CloseApplication(app);
+    }
+
+    public void PageNotFound()
+    {
+        OpenTab(NotFoundTab);
     }
 
     public override void Close()

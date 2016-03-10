@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Game\Applications\Browser\Browser.cs" />
     <Compile Include="Assets\Scripts\Game\Applications\Browser\HomeTab.cs" />
     <Compile Include="Assets\Scripts\Game\Applications\Browser\OmniBox.cs" />
+    <Compile Include="Assets\Scripts\Game\Applications\Browser\SchoolSiteTab.cs" />
     <Compile Include="Assets\Scripts\Game\Applications\Browser\Tab.cs" />
     <Compile Include="Assets\Scripts\Game\Applications\Browser\TabBar.cs" />
     <Compile Include="Assets\Scripts\Game\Applications\Browser\TabBarTab.cs" />

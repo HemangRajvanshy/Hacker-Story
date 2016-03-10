@@ -11,6 +11,11 @@ public class TabBar : TaskBar {
         base.Start();
     }
 
+    public void OpenInSameTab(Tab tab)
+    {
+
+    }
+
     public override void CloseApplication(App app)
     {
         base.CloseApplication(app);
