@@ -44,7 +44,10 @@ public class TaskBar : MonoBehaviour {
 
     public virtual void CloseApplication(App app)
     {
-        Destroy(OpenApps[app]);
-        OpenApps.Remove(app);
+        if (OpenApps.ContainsKey(app))
+        {
+            Destroy(OpenApps[app]);
+            OpenApps.Remove(app); 
+        }
     }
 }

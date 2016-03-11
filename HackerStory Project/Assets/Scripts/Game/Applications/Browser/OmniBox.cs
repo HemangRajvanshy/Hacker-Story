@@ -27,8 +27,8 @@ public class OmniBox : MonoBehaviour {
             SugButton.transform.FindChild("Text").GetComponent<Text>().text = Suggestion;
             SugButton.transform.localScale = SuggestionTemplate.transform.localScale;
             SugButton.transform.position = SuggestionTemplate.transform.position;
-
-            SugButton.GetComponent<Button>().onClick.AddListener(() => { OnSuggestionClick(Suggestion); });
+            string sug = Suggestion; // Call it for something to do with Pointers and stuff. Doesn't work otherwise.
+            SugButton.GetComponent<Button>().onClick.AddListener(() => { OnSuggestionClick(sug); });
         }
 
         List<GameObject> TabList = GameManager.Game.Hack.CurrentHack.Tabs;
@@ -56,6 +56,12 @@ public class OmniBox : MonoBehaviour {
         SiteSuggestionBox.SetActive(false);
     }
 
+    public void SetAddress(string address)
+    {
+        AdressBarText.text = address;
+        SiteSuggestionBox.SetActive(false);
+    }
+
     IEnumerator WaitBeforeResolve(float wait)
     {
         yield return new WaitForSeconds(wait);
@@ -65,9 +71,12 @@ public class OmniBox : MonoBehaviour {
     private void ResolveAddress(string address)
     {
         SiteSuggestionBox.SetActive(false);
-        if (TabDict.ContainsKey(address))
-            transform.parent.GetComponent<Browser>().OpenInSameTab(TabDict[address]);
-        else
-            transform.parent.GetComponent<Browser>().PageNotFound();
+        if (TabDict != null)
+        {
+            if (TabDict.ContainsKey(address))
+                transform.parent.GetComponent<Browser>().OpenInSameTab(TabDict[address], address);
+            else
+                transform.parent.GetComponent<Browser>().PageNotFound(address); 
+        }
     }
 }

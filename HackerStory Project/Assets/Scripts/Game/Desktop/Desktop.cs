@@ -22,7 +22,7 @@ public class Desktop : MonoBehaviour {
 
     void Start()
     {
-        ShowDesktop();
+        //ShowDesktop();
     }
 
     public void ShowHackerGuide()
@@ -43,14 +43,6 @@ public class Desktop : MonoBehaviour {
         OpenApplication(Computer);
     }
 
-    public void ShowDesktop()
-    {
-       // state = DesktopState.Desktop;
-        HackerGuide.Close();
-        Browser.Close();
-        Computer.Close();
-    }
-
     private void OpenApplication(App App)
     {
         App.Open();
@@ -65,7 +57,10 @@ public class Desktop : MonoBehaviour {
 
     public void CloseApplication(App App)
     {
-        App.Close();
-        TaskBar.CloseApplication(App);
+        if (App.open)
+        {
+            App.Close();
+            TaskBar.CloseApplication(App); 
+        }
     }
 }

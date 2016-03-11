@@ -11,8 +11,8 @@ public class Story : MonoBehaviour
 [Serializable]
 public struct StoryScene
 {
-    public List<String> Dialogues;
     public Sprite image;
+    public List<String> Dialogues;
     public List<AudioClip> SfxList;
     public List<float> Delays;
 }

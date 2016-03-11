@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Browser : App {
 
+    public OmniBox Omni;
     public TabBar TabBar;
     public Tab HomeTab;
     public Tab NotFoundTab;
@@ -13,16 +14,18 @@ public class Browser : App {
         OpenTab(HomeTab); 
     }
 
-    public void OpenTab(Tab tab)
+    public void OpenTab(Tab tab, string Address = "")
     {
         tab.Open(); 
         TabBar.OpenApplication(tab);
+        Omni.SetAddress(Address);
     }
 
-    public void OpenInSameTab(Tab tab)
+    public void OpenInSameTab(Tab tab, string Address = "")
     {
         tab.Open();
         TabBar.OpenInSameTab(tab);
+        Omni.SetAddress(Address);
     }
 
     public void CloseTab(App app)
@@ -31,15 +34,18 @@ public class Browser : App {
         TabBar.CloseApplication(app);
     }
 
-    public void PageNotFound()
+    public void PageNotFound(string address)
     {
-        OpenInSameTab(NotFoundTab);
+        OpenInSameTab(NotFoundTab, address);
     }
 
     public override void Close()
     {
-        if(open)
+        TabBar.CloseAllTabs();
+        if (open)
+        {
             OpenTab(HomeTab); // Enable HomeTab so that it opens up when you start it again.
+        }
         base.Close();
     }
 }

@@ -37,12 +37,16 @@ public class Main : MonoBehaviour {
     public void LoadGameScene()
     {
         ShowLoadingScreen("Game");
+        if(MusicMgr.GameBgMusic)
+            MusicMgr.Play(MusicMgr.GameBgMusic);
         SceneManager.LoadScene("Game");
     }
 
     public void LoadMenuScene()
     {
         ShowLoadingScreen("Menu");
+        if (MusicMgr.MenuBgMusic)
+            MusicMgr.Play(MusicMgr.MenuBgMusic);
         SceneManager.LoadScene("Menu");
     }
 
