@@ -11,32 +11,43 @@ public class OmniBox : MonoBehaviour {
     public GameObject SiteSuggestionBox;
     public InputField AdressBarText;
 
-    private Dictionary<string, Tab> TabDict;
+    private Dictionary<string, GameObject> TabDict;
 
     void Start()
     {
-        TabDict = new Dictionary<string, Tab>();
-        TabDict.Add("", transform.parent.GetComponent<Browser>().HomeTab);
+        TabDict = new Dictionary<string, GameObject>();
+        TabDict.Add("", transform.parent.GetComponent<Browser>().HomeTab.gameObject);
         SiteSuggestionBox.SetActive(false);
         SuggestionLayout.preferredHeight = Screen.height / 10f;
-        foreach(string Suggestion in GameManager.Game.Hack.CurrentHack.TabAddress)
+
+        foreach (GameObject TabObject in GameManager.Game.Hack.CurrentHack.Tabs)
         {
-            GameObject SugButton = Instantiate(SuggestionTemplate);
+            GameObject Tab = Instantiate(TabObject); // Create the Tab, set its parent, and reset values.
+            Tab tab = Tab.GetComponent<Tab>();
+            Tab.transform.SetParent(GameManager.Game.Hack.Browser.Tabs.transform);
+            Tab.transform.localScale = GameManager.Game.Hack.Browser.Tabs.transform.localScale;
+            Tab.transform.position = GameManager.Game.Hack.Browser.Tabs.transform.position;
+            Tab.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
+            Tab.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
+
+            GameObject SugButton = Instantiate(SuggestionTemplate); // Create a button for the tab and put it in Layout Group.
             SugButton.SetActive(true);
             SugButton.transform.SetParent(SuggestionTemplate.transform.parent);
-            SugButton.transform.FindChild("Text").GetComponent<Text>().text = Suggestion;
+            SugButton.transform.FindChild("Text").GetComponent<Text>().text = tab.Address;
             SugButton.transform.localScale = SuggestionTemplate.transform.localScale;
             SugButton.transform.position = SuggestionTemplate.transform.position;
-            string sug = Suggestion; // Call it for something to do with Pointers and stuff. Doesn't work otherwise.
+            string sug = tab.Address; // Call it for something to do with Pointers and stuff. Doesn't work otherwise. Edit: No I don't know anymore I changed stuff, but let it be.
             SugButton.GetComponent<Button>().onClick.AddListener(() => { OnSuggestionClick(sug); });
+
+            TabDict.Add(tab.Address, Tab); // Put the tab address and GameObject instance in the dictionary for easy access. 
+            Tab.SetActive(false); 
         }
 
-        List<GameObject> TabList = GameManager.Game.Hack.CurrentHack.Tabs;
-        List<string> TabName = GameManager.Game.Hack.CurrentHack.TabAddress;
-        for(int i = 0; i < TabName.Count; i++)
-        {
-            TabDict.Add(TabName[i], TabList[i].GetComponent<Tab>());
-        }
+
+        //foreach(GameObject tab in GameManager.Game.Hack.CurrentHack.Tabs)
+        //{
+        //    TabDict.Add(tab.GetComponent<Tab>().Address, tab.gameObject);
+        //}
 
     }
 
@@ -62,6 +73,13 @@ public class OmniBox : MonoBehaviour {
         SiteSuggestionBox.SetActive(false);
     }
 
+    public void SetAddressAndOpen(string address)
+    {
+        AdressBarText.text = address;
+        SiteSuggestionBox.SetActive(false);
+        ResolveAddress(address);
+    }
+
     IEnumerator WaitBeforeResolve(float wait)
     {
         yield return new WaitForSeconds(wait);
@@ -70,11 +88,12 @@ public class OmniBox : MonoBehaviour {
 
     private void ResolveAddress(string address)
     {
+        Debug.Log(address);
         SiteSuggestionBox.SetActive(false);
         if (TabDict != null)
         {
             if (TabDict.ContainsKey(address))
-                transform.parent.GetComponent<Browser>().OpenInSameTab(TabDict[address], address);
+                transform.parent.GetComponent<Browser>().OpenInSameTab(TabDict[address].GetComponent<Tab>(), address);
             else
                 transform.parent.GetComponent<Browser>().PageNotFound(address); 
         }
