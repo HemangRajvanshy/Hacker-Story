@@ -15,12 +15,12 @@ public class Hack : MonoBehaviour {
         HackCanvas.worldCamera = Camera.main;
         foreach(GameObject Tab in Tabs)
         {
-            Tab.SetActive(false);
             Tab.transform.SetParent(GameManager.Game.Hack.Browser.Tabs.transform);
             Tab.transform.localScale =
             Tab.transform.localScale = GameManager.Game.Hack.Browser.Tabs.transform.localScale;
             Tab.transform.position = GameManager.Game.Hack.Browser.Tabs.transform.position;
-            Tab.GetComponent<RectTransform>().position = new Vector3(0, 0, 0);
+            Tab.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
+            Tab.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
         }
     }
 }
