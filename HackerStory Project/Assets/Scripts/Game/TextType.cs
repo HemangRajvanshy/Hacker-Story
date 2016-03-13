@@ -20,6 +20,8 @@ public class TextType : MonoBehaviour {
                 Dialogue.text += letter;
                 if (Main.Instance.SfxMgr.TypingSfx)
                     Main.Instance.SfxMgr.Play(Main.Instance.SfxMgr.TypingSfx);
+                if (letter == '.' || letter == '?')
+                    yield return new WaitForSeconds(0.1f);
                 yield return new WaitForSeconds(1 / LetterPerSec);
             }
             else

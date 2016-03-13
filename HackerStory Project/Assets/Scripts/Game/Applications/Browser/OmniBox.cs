@@ -43,12 +43,6 @@ public class OmniBox : MonoBehaviour {
             Tab.SetActive(false); 
         }
 
-
-        //foreach(GameObject tab in GameManager.Game.Hack.CurrentHack.Tabs)
-        //{
-        //    TabDict.Add(tab.GetComponent<Tab>().Address, tab.gameObject);
-        //}
-
     }
 
     public void OnValueChange()
@@ -73,11 +67,11 @@ public class OmniBox : MonoBehaviour {
         SiteSuggestionBox.SetActive(false);
     }
 
-    public void SetAddressAndOpen(string address)
+    public void SetAddressAndOpen(string address, bool sametab)
     {
         AdressBarText.text = address;
         SiteSuggestionBox.SetActive(false);
-        ResolveAddress(address);
+        ResolveAddress(address, sametab);
     }
 
     IEnumerator WaitBeforeResolve(float wait)
@@ -86,14 +80,15 @@ public class OmniBox : MonoBehaviour {
         ResolveAddress(AdressBarText.text);
     }
 
-    private void ResolveAddress(string address)
+    private void ResolveAddress(string address, bool sametab = true)
     {
-        Debug.Log(address);
         SiteSuggestionBox.SetActive(false);
         if (TabDict != null)
         {
-            if (TabDict.ContainsKey(address))
+            if (TabDict.ContainsKey(address) && sametab)
                 transform.parent.GetComponent<Browser>().OpenInSameTab(TabDict[address].GetComponent<Tab>(), address);
+            else if (TabDict.ContainsKey(address))
+                transform.parent.GetComponent<Browser>().OpenTab(TabDict[address].GetComponent<Tab>(), address);
             else
                 transform.parent.GetComponent<Browser>().PageNotFound(address); 
         }

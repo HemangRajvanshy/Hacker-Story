@@ -10,5 +10,9 @@ public class Tab : App {
         //Do Nothing. Not the stuff in App.cs, it will give me a nullreference
     }
 
-
+    public override void Open()
+    {
+        base.Open();
+        GameManager.Game.Hack.Browser.Omni.SetAddress(Address);
+    }
 }

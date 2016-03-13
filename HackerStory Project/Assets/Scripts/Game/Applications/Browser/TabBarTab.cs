@@ -7,7 +7,9 @@ public class TabBarTab : TaskBarApp {
 
 	public void Quit()
     {
-        TabBar.Browser.CloseTab(app);        
+        TabBar.Browser.CloseTab(app);
+        Browser Browser = GameManager.Game.Hack.Browser;
+        Browser.Omni.SetAddress(Browser.Tabs.GetComponentsInChildren<Tab>()[0].Address);    
     }
 
     public override void OnClick()

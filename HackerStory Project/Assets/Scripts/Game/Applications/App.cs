@@ -21,12 +21,8 @@ public class App : MonoBehaviour {
 
     public virtual void Open()
     {
-        Debug.Log("Called " + name);
-        Debug.Log(this.gameObject.activeInHierarchy);
-        gameObject.active = true;
         gameObject.SetActive(true);
         transform.SetAsLastSibling();
-        Debug.Log(this.gameObject.activeInHierarchy);
         open = true;
     }
 
