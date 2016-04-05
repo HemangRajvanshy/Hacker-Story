@@ -12,6 +12,7 @@ public class OmniBox : MonoBehaviour {
     public InputField AdressBarText;
 
     private Dictionary<string, GameObject> TabDict;
+    private string CurrentSiteAddress;
 
     void Start()
     {
@@ -52,7 +53,8 @@ public class OmniBox : MonoBehaviour {
 
     public void OnEndEdit()
     {
-        StartCoroutine(WaitBeforeResolve(0.2f));
+        if(AdressBarText.text != CurrentSiteAddress)
+            StartCoroutine(WaitBeforeResolve(0.2f));
     }
 
     public void OnSuggestionClick(string Suggestion)
@@ -63,6 +65,7 @@ public class OmniBox : MonoBehaviour {
 
     public void SetAddress(string address)
     {
+        CurrentSiteAddress = address;
         AdressBarText.text = address;
         SiteSuggestionBox.SetActive(false);
     }
